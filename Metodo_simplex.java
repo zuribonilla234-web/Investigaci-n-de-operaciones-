@@ -51,7 +51,17 @@ public class Metodo_simplex{
         for(int i=1;i<=filas;i++){
             System.out.println("restriccion");
             //coeficientes de variables
-            
+            for(int j=0;j<variables;j++){
+                System.out.println("Coeficiente de x "+(j+1)+": ");
+                tabla[i][j] = lector.nextDouble();
+            }
+            //Tipo de restriccion
+            System.out.println("Tipo de restriccion: ");
+            System.out.println("1. <= ");
+            System.out.println("2. >= ");
+            System.out.println("3. = ");
+            System.out.println("Elige del 1, 2 o 3: ");
+            int tipo = lector.nextInt();
         }
     }
 }
