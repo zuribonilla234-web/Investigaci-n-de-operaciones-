@@ -127,8 +127,21 @@ public class Metodo_simplex{
                 System.out.println("Columna pivote: variable"+obtenerNombreVariable(colPivote,variables));
 
             }else{
+                for(int j=1;j<columnas-1;j++){
+                    if(tabla[0][j]>tabla[0][colPivote]){
+                        colPivote=j;
+                    }
+                }
+                System.out.println("Columna pivote: variable "+ obtenerNombreVariable(colPivote,variables));
+
+            }
+            //Encontrar fila pivote
+            int filaPivote = -1;
+            double razonMinima= Double.MAX_VALUE;
+            for(int i=1;i<filas;i++){
                 
             }
+
             
         }
 
