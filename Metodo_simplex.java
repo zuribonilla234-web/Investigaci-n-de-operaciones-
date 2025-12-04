@@ -16,5 +16,10 @@ public class Metodo_simplex{
         variables = lector.nextInt();
         System.out.println("Ingresa cuantas restricciones desea: ");
         restricciones=lector.nextInt();
+
+        //tamaño de la tabla
+        int filas = restricciones+1;
+        int columnas = variables+1;
+        double [][]tabla = new double[filas][columnas];
     }
 }
