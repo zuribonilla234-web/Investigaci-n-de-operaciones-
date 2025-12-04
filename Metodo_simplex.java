@@ -29,5 +29,17 @@ public class Metodo_simplex{
         }else{
             System.out.println("Minimizar z= c1*x1 + c2*x2 + ...");
         }
+
+        System.out.println("Introduce los coeficientes: ");
+        for(int j=0;j<variables;j++){
+            System.out.println("Coeficiente de x "+(j+1)+": ");
+            double coeficiente = lector.nextDouble();
+
+            if(esMaximizar){
+                tabla[0][j]=-coeficiente;
+            }else{
+                tabla[0][j]=coeficiente;
+            }
+        }
     }
 }
