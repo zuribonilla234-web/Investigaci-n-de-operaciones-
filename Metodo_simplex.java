@@ -156,8 +156,26 @@ public class Metodo_simplex{
             System.out.println("Fila pivote: restricción " + filaPivote);
             System.out.println("Elemento pivote: " + tabla[filaPivote][colPivote]);
 
-            
+            //operacion pivote
+            double pivote = tabla[filaPivote][colPivote];
+
+            for(int j=0,j<columnas;j++){
+                tabla[filaPivote][j] = tabla[filaPivote][j]/pivote;
+            }
+             for(int i = 0; i < filas; i++){
+                if(i != filaPivote){
+                    double factor = tabla[i][colPivote]; 
+                    for(int j = 0; j < columnas; j++){
+                       tabla[i][j] = tabla[i][j] - factor * tabla[filaPivote][j]; 
+                    }
+                }
+             }
+             System.out.println("Tabla despues de iteracion: ");
+             mostrarTablaSimplex(tabla, variables, restricciones);
+             iteracion++;
+ 
         }
+        
 
 
     }
