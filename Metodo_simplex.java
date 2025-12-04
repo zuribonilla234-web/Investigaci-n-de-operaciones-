@@ -175,7 +175,31 @@ public class Metodo_simplex{
              iteracion++;
  
         }
-        
+        //Mostrar resultados
+        System.out.println("Resultados");
+        if(esMaximizar){
+            System.out.println("Valor maximo de z="+tabla[0][columnas-1]);
+        }else{
+            System.out.println("Valor minimo de z= "+tabla[0][columnas-1]);
+        }
+
+        for(int j=0;j<variables;j++){
+            double valor = 0;
+
+            for(int i=1;i<filas;i++){
+                if(Math.abs(tabla[i][j]-1.0)<0.0001){
+                    boolean esUnitaria = true;
+                    for(int k=0;k<columnas-1;k++){
+                       if(k != j && Math.abs(tabla[i][k]) > 0.0001){
+                        esUnitaria = false;
+                        break;
+                       }  
+                    }
+                }
+            }
+
+        }
+
 
 
     }
