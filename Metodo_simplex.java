@@ -97,13 +97,36 @@ public class Metodo_simplex{
             terminado=true;
 
             if (esMaximizar){
-                for(int j=0;j<columnas;j++){
+                for(int j=0;j<columnas-1;j++){
                     if (tabla[0][j]<0){
                         terminado = false;
                         break;
                     }
                 }
             }else {
+                for(int j=0;j<columnas-1;j++){
+                    if(tabla[0][j]>0){
+                        terminado = false;
+                        break;
+                    }
+                }
+
+            }
+            if(terminado){
+                System.out.println("Solucion optima encontrada");
+                break;
+            }
+            int colPivote = 0;
+
+            if(esMaximizar){
+                for(int j=1;j<columnas-1;j++){
+                    if(tabla[0][j]<tabla[0][colPivote]){
+                        colPivote = j;
+                    }
+                }
+                System.out.println("Columna pivote: variable"+obtenerNombreVariable(colPivote,variables));
+
+            }else{
                 
             }
             
