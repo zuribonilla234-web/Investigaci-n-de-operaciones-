@@ -9,5 +9,12 @@ public class Metodo_simplex{
         System.out.println("1. Maximizar");
         System.out.println("2. Minimizar");
         int opcion = lector.nextInt();
+
+        boolean esMaximizar = (opcion==1);
+
+        System.out.println("Ingresa cuantas variables desea tener: ");
+        variables = lector.nextInt();
+        System.out.println("Ingresa cuantas restricciones desea: ");
+        restricciones=lector.nextInt();
     }
 }
