@@ -138,9 +138,23 @@ public class Metodo_simplex{
             //Encontrar fila pivote
             int filaPivote = -1;
             double razonMinima= Double.MAX_VALUE;
+
             for(int i=1;i<filas;i++){
-                
+                if(tabla[i][colPivote] > 0){
+                    double razon = tabla[i][columnas-1] / tabla[i][colPivote];
+                     if(razon >= 0 && razon < razonMinima){
+                        razonMinima = razon;
+                        filaPivote = i;
+                     } 
+
+                }
             }
+            if(filaPivote == -1){
+                System.out.println("\nProblema no acotado - solución infinita");
+                return;
+            }
+            System.out.println("Fila pivote: restricción " + filaPivote);
+            System.out.println("Elemento pivote: " + tabla[filaPivote][colPivote]);
 
             
         }
