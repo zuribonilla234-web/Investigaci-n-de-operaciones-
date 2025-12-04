@@ -159,7 +159,7 @@ public class Metodo_simplex{
             //operacion pivote
             double pivote = tabla[filaPivote][colPivote];
 
-            for(int j=0,j<columnas;j++){
+            for(int j=0;j<columnas;j++){
                 tabla[filaPivote][j] = tabla[filaPivote][j]/pivote;
             }
              for(int i = 0; i < filas; i++){
@@ -195,12 +195,46 @@ public class Metodo_simplex{
                         break;
                        }  
                     }
+                    if(esUnitaria){
+                        valor = tabla[i][columnas-1];
+                        break;
+                    }
                 }
             }
+           System.out.printf("x%d = %.4f\n", j+1, valor); 
+
+        }
+        for(int j=variables;j<columnas-1;j++){
+            double valor = 0;
+
+            for(int i = 1; i < filas; i++){
+              if(Math.abs(tabla[i][j] - 1.0) < 0.0001){
+                boolean esUnitaria = true;
+                for(int k = 0; k < columnas-1; k++){
+                   if(k != j && Math.abs(tabla[i][k]) > 0.0001){
+                    esUnitaria = false;
+                    break;
+                   } 
+                }
+                if(esUnitaria){
+                    valor=tabla[i][columnas-1];
+                    break;
+                }
+
+              }  
+            }
+            if(valor>0.0001){
+                System.out.printf("s%d = %.4f\n", j-variables+1, valor);
+            }
+
+
+        }
+        
+
+    }
+        public static void mostrarTablaSimplex(double[][]tabla,int vars, int restr){
 
         }
 
-
-
-    }
 }
+
