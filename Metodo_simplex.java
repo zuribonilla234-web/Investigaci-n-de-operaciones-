@@ -150,7 +150,7 @@ public class Metodo_simplex{
                 }
             }
             if(filaPivote == -1){
-                System.out.println("\nProblema no acotado - solución infinita");
+                System.out.println("Problema no acotado - solución infinita");
                 return;
             }
             System.out.println("Fila pivote: restricción " + filaPivote);
