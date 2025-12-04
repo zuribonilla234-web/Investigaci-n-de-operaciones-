@@ -233,8 +233,52 @@ public class Metodo_simplex{
 
     }
         public static void mostrarTablaSimplex(double[][]tabla,int vars, int restr){
+            int columnas=tabla[0].length;
 
+          System.out.println(" ");
+          for(int j=0;j<vars;j++){
+            System.out.printf("    x%-2d", j+1);
+         }
+          for(int j = 0; j < restr; j++) {
+            System.out.printf("    s%-2d", j+1);
+         }
+          System.out.print("    Sol");
+        
+         // Línea separadora
+          System.out.print("\n   ");
+          for(int j = 0; j < columnas+1; j++) {
+            System.out.print("------");
+         }
+        
+         // Filas
+          System.out.print("\n Z |");
+          for(int j = 0; j < columnas; j++) {
+            System.out.printf(" %5.2f", tabla[0][j]);
+         }
+         System.out.println();
+        
+         for(int i = 1; i < tabla.length; i++) {
+            System.out.printf("R%d |", i);
+            for(int j = 0; j < columnas; j++) {
+                System.out.printf(" %5.2f", tabla[i][j]);
+            }
+            System.out.println();
+         }
+        
+         System.out.print("   ");
+         for(int j = 0; j < columnas+1; j++) {
+            System.out.print("------");
+         }
+          System.out.println();
+
+         }
+         public static String obtenerNombreVariable(int indice, int variables){
+            if(indice<variables){
+                return "x" + (indice+1);
+            }else{
+                return "s" + (indice-variables+1);
         }
+    }
 
 }
 
