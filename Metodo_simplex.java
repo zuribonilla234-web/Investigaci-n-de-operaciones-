@@ -19,7 +19,7 @@ public class Metodo_simplex{
 
         //tamaño de la tabla
         int filas = restricciones+1;
-        int columnas = variables+1;
+        int columnas = variables+restricciones+1;
         double [][]tabla = new double[filas][columnas];
 
         //funcion objetivo
@@ -41,14 +41,15 @@ public class Metodo_simplex{
                 tabla[0][j]=coeficiente;
             }
         }
-        for(int j=variables;j<columnas;j++){
+        for(int j=variables;j<columnas-1;j++){
             tabla[0][j]=0;
         }
+        tabla[0][columnas-1]=0;
 
         System.out.println("Restricciones");
         System.out.println("Formato: a1*x1 + a2*x2 + ....[<=, >=, =]");
 
-        for(int i=1;i<=filas;i++){
+        for(int i=1;i<filas;i++){
             System.out.println("restriccion");
             //coeficientes de variables
             for(int j=0;j<variables;j++){
@@ -68,12 +69,12 @@ public class Metodo_simplex{
             tabla[i][columnas-1] = lector.nextDouble();
 
             if(tipo ==1){
-                tabla[i][variables+i-1]=1;
+                tabla[i][variables+(i-1)]=1;
             }else if(tipo ==2){
-                tabla[i][variables+i-1]=-1;
+                tabla[i][variables+(i-1)]=-1;
             }else if(tipo ==3){
-                tabla[i][variables+i-1]=1;
-        
+                // Para igualdad, necesitarías variable artificial
+                tabla[i][variables+(i-1)]=1;
             }
         }
         System.out.println("Resolviendo");
@@ -116,22 +117,29 @@ public class Metodo_simplex{
                 System.out.println("Solucion optima encontrada");
                 break;
             }
-            int colPivote = 0;
+            int colPivote = -1;
+            double valorPivote;
 
             if(esMaximizar){
-                for(int j=1;j<columnas-1;j++){
-                    if(tabla[0][j]<tabla[0][colPivote]){
+                valorPivote = 0;
+                for(int j=0;j<columnas-1;j++){
+                    if(tabla[0][j]<valorPivote){
+                        valorPivote = tabla[0][j];
                         colPivote = j;
                     }
                 }
-                System.out.println("Columna pivote: variable"+obtenerNombreVariable(colPivote,variables));
+                if(colPivote == -1) colPivote = 0;
+                System.out.println("Columna pivote: variable "+obtenerNombreVariable(colPivote,variables));
 
             }else{
-                for(int j=1;j<columnas-1;j++){
-                    if(tabla[0][j]>tabla[0][colPivote]){
+                valorPivote = 0;
+                for(int j=0;j<columnas-1;j++){
+                    if(tabla[0][j]>valorPivote){
+                        valorPivote = tabla[0][j];
                         colPivote=j;
                     }
                 }
+                if(colPivote == -1) colPivote = 0;
                 System.out.println("Columna pivote: variable "+ obtenerNombreVariable(colPivote,variables));
 
             }
@@ -272,11 +280,11 @@ public class Metodo_simplex{
           System.out.println();
 
          }
-         public static String obtenerNombreVariable(int indice, int variables){
-            if(indice<variables){
-                return "x" + (indice+1);
-            }else{
-                return "s" + (indice-variables+1);
+    public static String obtenerNombreVariable(int indice, int variables){
+        if(indice<variables){
+            return "x" + (indice+1);
+        }else{
+            return "s" + (indice-variables+1);
         }
     }
 
