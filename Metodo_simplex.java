@@ -62,6 +62,19 @@ public class Metodo_simplex{
             System.out.println("3. = ");
             System.out.println("Elige del 1, 2 o 3: ");
             int tipo = lector.nextInt();
+
+            //Termino independiente
+            System.out.println("valor de b:");
+            tabla[i][columnas-1] = lector.nextDouble();
+
+            if(tipo ==1){
+                tabla[i][variables+i-1]=1;
+            }else if(tipo ==2){
+                tabla[i][variables+i-1]=-1;
+            }else if(tipo ==3){
+                tabla[i][variables+i-1]=1;
+        
+            }
         }
     }
 }
