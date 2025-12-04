@@ -86,7 +86,29 @@ public class Metodo_simplex{
         int columnas = tabla[0].length;
         int iteracion = 1;
         boolean terminado = false;
-        
+
+        System.out.println("Tabla inicial: ");
+        mostrarTablaSimplex(tabla, variables, restricciones);
+
+        while (!terminado && iteracion<=20){
+            System.out.println("iteracion "+iteracion);
+
+            //verificar si es optimo
+            terminado=true;
+
+            if (esMaximizar){
+                for(int j=0;j<columnas;j++){
+                    if (tabla[0][j]<0){
+                        terminado = false;
+                        break;
+                    }
+                }
+            }else {
+                
+            }
+            
+        }
+
 
     }
 }
