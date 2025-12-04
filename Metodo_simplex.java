@@ -76,5 +76,17 @@ public class Metodo_simplex{
         
             }
         }
+        System.out.println("Resolviendo");
+        resolverSimplex(tabla, esMaximizar, variables, restricciones);
+        lector.close();
+
+    }
+    public static void resolverSimplex(double[][] tabla, boolean esMaximizar, int variables, int restricciones) {
+        int filas = tabla.length;
+        int columnas = tabla[0].length;
+        int iteracion = 1;
+        boolean terminado = false;
+        
+
     }
 }
