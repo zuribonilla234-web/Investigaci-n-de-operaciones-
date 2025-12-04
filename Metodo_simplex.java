@@ -41,5 +41,17 @@ public class Metodo_simplex{
                 tabla[0][j]=coeficiente;
             }
         }
+        for(int j=variables;j<columnas;j++){
+            tabla[0][j]=0;
+        }
+
+        System.out.println("Restricciones");
+        System.out.println("Formato: a1*x1 + a2*x2 + ....[<=, >=, =]");
+
+        for(int i=1;i<=filas;i++){
+            System.out.println("restriccion");
+            //coeficientes de variables
+            
+        }
     }
 }
