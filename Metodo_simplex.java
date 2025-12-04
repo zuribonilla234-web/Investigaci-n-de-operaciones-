@@ -21,5 +21,13 @@ public class Metodo_simplex{
         int filas = restricciones+1;
         int columnas = variables+1;
         double [][]tabla = new double[filas][columnas];
+
+        //funcion objetivo
+        System.out.println("Funcion objetivo");
+        if(esMaximizar){
+            System.out.println("Maximizar z= c1*x1 + c2*x2 + ...");
+        }else{
+            System.out.println("Minimizar z= c1*x1 + c2*x2 + ...");
+        }
     }
 }
